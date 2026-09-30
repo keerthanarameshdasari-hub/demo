@@ -39,5 +39,6 @@ jobs:
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
             docker stop tasktracker || true
+            docker rm tasktracker || true
             docker run -d --name tasktracker --restart unless-stopped -p 8080:8080 ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
             docker image prune -f
