@@ -31,7 +31,7 @@ jobs:
       - name: push image
         run: docker push ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
       - name: deploy to EC2
-        uses: appleboy/ssh-action@1.2.0
+        uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
