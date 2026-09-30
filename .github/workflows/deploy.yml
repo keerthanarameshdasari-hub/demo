@@ -33,9 +33,9 @@ jobs:
       - name: deploy to EC2
         uses: appleboy/ssh-action@1.2.0
         with:
-          host: {{ secrets.EC2_HOST }}
-          username: {{ secrets.EC2_USER }}
-          key: {{ secrets.EC2_SSH_KEY }}
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             docker pull ${{ secrets.DOCKER_USERNAME }}/${{ env.IMAGE_NAME }}:latest
             docker stop tasktracker || true
